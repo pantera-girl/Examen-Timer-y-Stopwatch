@@ -1,0 +1,118 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb5ak0jmmpln0"]
+
+[ext_resource type="Script" path="res://Canvas layer.gd" id="1_16nu1"]
+[ext_resource type="Texture2D" uid="uid://5gcy8khk6hm6" path="res://timer.png" id="2_4oymm"]
+[ext_resource type="AudioStream" uid="uid://dnnwe25etgwvt" path="res://Digital alarm clock sound.mp3" id="3_5vt00"]
+[ext_resource type="FontFile" uid="uid://us3oc6aensg4" path="res://alarm clock.ttf" id="3_6py7i"]
+
+[node name="Canvas layer" type="CanvasLayer"]
+script = ExtResource("1_16nu1")
+
+[node name="Spritetimer" type="Sprite2D" parent="."]
+position = Vector2(477, 310)
+scale = Vector2(0.606876, 0.583382)
+texture = ExtResource("2_4oymm")
+
+[node name="TimerLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 223.0
+offset_top = 183.0
+offset_right = 275.0
+offset_bottom = 211.0
+scale = Vector2(7.74192, 6.10579)
+theme_override_fonts/font = ExtResource("3_6py7i")
+theme_override_font_sizes/font_size = 20
+text = "00:00"
+
+[node name="DecLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 626.0
+offset_top = 231.0
+offset_right = 666.0
+offset_bottom = 259.0
+scale = Vector2(4.30315, 3.85294)
+theme_override_fonts/font = ExtResource("3_6py7i")
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="ModeLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 223.0
+offset_top = 127.0
+offset_right = 271.0
+offset_bottom = 150.0
+scale = Vector2(2.05119, 1.77285)
+theme_override_fonts/font = ExtResource("3_6py7i")
+text = "TIMER
+"
+
+[node name="ModeButton" type="Button" parent="."]
+offset_left = 805.0
+offset_top = 386.0
+offset_right = 813.0
+offset_bottom = 394.0
+scale = Vector2(7.48936, -8.71467)
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.414
+anchor_top = 0.996
+anchor_right = 0.414
+anchor_bottom = 0.996
+offset_left = 115.072
+offset_top = -202.408
+offset_right = 123.072
+offset_bottom = -194.408
+scale = Vector2(14.6962, 14.4852)
+
+[node name="StateLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 580.0
+offset_top = 116.0
+offset_right = 651.0
+offset_bottom = 139.0
+scale = Vector2(1.87447, 1.81034)
+theme_override_fonts/font = ExtResource("3_6py7i")
+theme_override_font_sizes/font_size = 0
+text = "STOPPED"
+
+[node name="SecondsButton" type="Button" parent="."]
+offset_left = 407.0
+offset_top = 463.0
+offset_right = 424.0
+offset_bottom = 494.0
+scale = Vector2(5.40858, 2.72499)
+theme_override_fonts/font = ExtResource("3_6py7i")
+text = "S"
+
+[node name="AddMinButton" type="Button" parent="."]
+offset_left = 236.0
+offset_top = 463.0
+offset_right = 259.0
+offset_bottom = 494.0
+scale = Vector2(3.83369, 2.7102)
+theme_override_fonts/font = ExtResource("3_6py7i")
+text = "M"
+
+[node name="ResetButton" type="Button" parent="."]
+offset_left = 609.0
+offset_top = 43.0
+offset_right = 660.0
+offset_bottom = 74.0
+scale = Vector2(2.13, 1.49885)
+text = "Reset"
+
+[node name="StopSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5vt00")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="ready" from="ModeLabel" to="." method="_on_mode_label_ready"]
+[connection signal="pressed" from="ModeButton" to="." method="_on_mode_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="SecondsButton" to="." method="_on_seconds_button_pressed"]
+[connection signal="pressed" from="AddMinButton" to="." method="_on_add_min_button_pressed"]
+[connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]

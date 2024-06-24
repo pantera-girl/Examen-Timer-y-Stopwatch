@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb5ak0jmmpln0"]
+
+[ext_resource type="Script" path="res://Canvas layer.gd" id="1_16nu1"]
+[ext_resource type="Texture2D" uid="uid://5gcy8khk6hm6" path="res://timer.png" id="2_4oymm"]
+
+[node name="Canvas layer" type="CanvasLayer"]
+script = ExtResource("1_16nu1")
+
+[node name="Spritetimer" type="Sprite2D" parent="."]
+position = Vector2(601, 554)
+texture = ExtResource("2_4oymm")
+
+[node name="TimerLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 189.0
+offset_top = 329.0
+offset_right = 241.0
+offset_bottom = 357.0
+scale = Vector2(12.7233, 10.4)
+theme_override_font_sizes/font_size = 20
+text = "00:00"
+
+[node name="DecLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 870.0
+offset_top = 451.0
+offset_right = 910.0
+offset_bottom = 474.0
+scale = Vector2(5.52693, 5.3852)
+theme_override_font_sizes/font_size = 20
+text = ".0
+"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="ModeLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 191.0
+offset_top = 260.0
+offset_right = 231.0
+offset_bottom = 283.0
+scale = Vector2(3.64271, 3.62266)
+text = "TIMER
+"
+
+[node name="ModeButton" type="Button" parent="."]
+offset_left = 1159.0
+offset_top = 657.0
+offset_right = 1167.0
+offset_bottom = 665.0
+scale = Vector2(7.48936, -8.71467)
+
+[connection signal="pressed" from="ModeButton" to="." method="_on_mode_button_pressed"]
